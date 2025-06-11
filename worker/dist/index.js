@@ -20,6 +20,7 @@ function processSubmission(submission) {
         // Here you would add your actual processing logic
         yield new Promise(resolve => setTimeout(resolve, 1000));
         console.log(`Finished processing submission for problemId ${problemId}.`);
+        client.publish("problem_status", { problemId, status: "processed" });
     });
 }
 function startWorker() {
